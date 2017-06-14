@@ -7,7 +7,11 @@ Template.autoformTinyMCE.onRendered(function() {
 
     var editor = tinymce.get(id);
     this.autorun(function() {
-        editor.setContent(Template.currentData().value);
+        var value = Template.currentData().value;
+
+        if (value) {
+            editor.setContent(value);
+        }
     });
 });
 
