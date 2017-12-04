@@ -1,13 +1,15 @@
+import tinymce from 'tinymce/tinymce';
+import 'tinymce/themes/modern/theme';
+
 Template.autoformTinyMCE.onRendered(function() {
-    var initOptions = this.data || {};
-    var id = this.firstNode.id;
-    initOptions.selector = '#' + id;
-    initOptions.skin_url = Meteor.absoluteUrl('packages/teamon_tinymce/skins/lightgray');
+    const initOptions = this.data || {};
+    const id = this.firstNode.id;
+    initOptions.selector = `#${id}`;
     tinymce.init(initOptions);
 
-    var editor = tinymce.get(id);
-    this.autorun(function() {
-        var value = Template.currentData().value;
+    const editor = tinymce.get(id);
+    this.autorun(() => {
+        const value = Template.currentData().value;
 
         if (value) {
             editor.setContent(value);
@@ -16,20 +18,20 @@ Template.autoformTinyMCE.onRendered(function() {
 });
 
 Template.autoformTinyMCE.helpers({
-    schemaKey: function() {
+    schemaKey() {
         return this.atts['data-schema-key'];
     },
-    text: function() {
+    text() {
         return Template.currentData().value;
     },
-    id: function() {
+    id() {
         return Math.random().toString(36).substring(7);
     }
 });
 
 AutoForm.addInputType('tinyMCE', {
-    template: "autoformTinyMCE",
-    valueOut: function() {
+    template: 'autoformTinyMCE',
+    valueOut() {
         return this.val();
     }
 });
