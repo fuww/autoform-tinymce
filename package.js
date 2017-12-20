@@ -13,6 +13,7 @@ Package.describe({
 Package.onUse(function(api) {
   api.versionsFrom('1.2.1');
   api.use('ecmascript');
+  api.use('dynamic-import');
   api.use('blaze-html-templates');
   api.use('aldeed:autoform@5.7.1');
   api.addFiles('autoform-tinymce.html', 'client');
