@@ -9,11 +9,17 @@ Template.autoformTinyMCE.onRendered(function() {
 
     const editor = tinymce.get(id);
     this.autorun(() => {
-        const value = Template.currentData().value;
-
-        if (value) {
-            editor.setContent(value);
+        const data = Template.currentData();
+        if (!data) {
+            return;
         }
+
+        const value = data.value;
+        if (!value) {
+            return;
+        }
+
+        editor.setContent(value);
     });
 });
 
