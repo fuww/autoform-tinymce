@@ -19,10 +19,3 @@ Package.onUse(function(api) {
   api.addFiles('autoform-tinymce.html', 'client');
   api.addFiles('autoform-tinymce.js', 'client');
 });
-
-Package.onTest(function(api) {
-  api.use('ecmascript');
-  api.use('tinytest');
-  api.use('skehoe1989:autoform-tinymce');
-  api.addFiles('autoform-tinymce-tests.js');
-});
